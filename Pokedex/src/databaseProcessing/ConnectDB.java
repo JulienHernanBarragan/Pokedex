@@ -2,7 +2,11 @@ package databaseProcessing;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+
+import javax.swing.JOptionPane;
 
 public class ConnectDB {
 
@@ -22,5 +26,29 @@ public class ConnectDB {
 			System.out.println(e.getMessage());
 		}
 	}
+	
+	// Identification 
+    public String connectAPI(String user, String password) {	
+    	String acceptConnectingPokedex ="";
+    	
+	    try 
+	    {
+	    	Statement st = new ConnectDB().connexion.createStatement();
+	    	ResultSet request = st.executeQuery("SELECT * FROM user WHERE pseudo='"+user+"' AND password='"+password+"'");
+	    	if (request.next()){
+	    		acceptConnectingPokedex = "accept;"+ request.getInt("ID");
+	    		//request.getString("ID");
+	    	} else {
+	    		JOptionPane.showMessageDialog(null,"Données Incorrect !");
+	    	}
+	    		request.close();
+	    }
+	    catch (Exception e)
+	    {
+	    	System.out.println("Connexion Impossible");
+	    e.printStackTrace();
+	    }
+	    return acceptConnectingPokedex;
+    }
 	
 }

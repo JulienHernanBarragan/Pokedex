@@ -28,7 +28,7 @@ public class addPokemon extends JFrame {
 	JButton add, returnMenu, validrecherche;
 	int pokemonSelectedID;
 	
-	public addPokemon(int ID_user) {
+	public addPokemon(int user_ID) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 677, 800);
 		pan = new JPanel();
@@ -81,7 +81,7 @@ public class addPokemon extends JFrame {
 		returnMenu = new JButton("Retour");
 		returnMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Menu frame = new Menu(2);
+				Menu frame = new Menu(user_ID);
 				frame.setVisible(true);
 				dispose();
 			}
@@ -91,7 +91,7 @@ public class addPokemon extends JFrame {
 		add = new JButton("Ajouter ce pok\u00E9mon \u00E0 mon Pokedex");
 		add.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				new DataForPokedex().addPokemon(pokemonSelectedID, 2);
+				new DataForPokedex().addPokemon(pokemonSelectedID, user_ID);
 			}
 		});
 		panSouth.add(add);

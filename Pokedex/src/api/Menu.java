@@ -43,7 +43,7 @@ public class Menu extends JFrame {
 		addPokemon = new JButton("Ajouter un pokémon à mon pokedex");
 		addPokemon.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				addPokemon frame = new addPokemon(2);
+				addPokemon frame = new addPokemon(user_ID);
 				frame.setVisible(true);
 				dispose();
 			}
@@ -53,7 +53,7 @@ public class Menu extends JFrame {
 		deletePokemon = new JButton("Supprimer un pokémon de mon pokedex");
 		deletePokemon.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				deletePokemon frame = new deletePokemon(2);
+				deletePokemon frame = new deletePokemon(user_ID);
 				frame.setVisible(true);
 				dispose();
 			}
