@@ -51,6 +51,13 @@ public class Menu extends JFrame {
 		panCentre.add(addPokemon);
 		
 		deletePokemon = new JButton("Supprimer un pokémon de mon pokedex");
+		deletePokemon.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				deletePokemon frame = new deletePokemon(2);
+				frame.setVisible(true);
+				dispose();
+			}
+		});
 		panCentre.add(deletePokemon);
 		
 		seePokedex = new JButton("Voir mon pokedex");

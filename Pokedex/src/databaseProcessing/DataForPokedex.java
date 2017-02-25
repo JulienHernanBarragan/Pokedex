@@ -64,29 +64,61 @@ public class DataForPokedex {
 	}
 	
 	// Table containing pokemon for add to pokedex
-		public DefaultTableModel tableAddPokemon(){
+	public DefaultTableModel tableAddPokemon(){
 			
-			DefaultTableModel dt = new DefaultTableModel();
-			ResultSet rset;
-			try{
-				dt.addColumn("ID");
-				dt.addColumn("Nom");
-				dt.addColumn("Type");
-		    	Statement st = new ConnectDB().connexion.createStatement();
-				String query="SELECT ID, name, elementary FROM pokemon";
-				rset=st.executeQuery(query);
+		DefaultTableModel dt = new DefaultTableModel();
+		ResultSet rset;
+		try{
+			dt.addColumn("ID");
+			dt.addColumn("Nom");
+			dt.addColumn("Type");
+		   	Statement st = new ConnectDB().connexion.createStatement();
+			String query="SELECT ID, name, elementary FROM pokemon";
+			rset=st.executeQuery(query);
 
-				while(rset.next()) {
-					Object []tableau={rset.getInt("ID"),rset.getString("name"),rset.getString("elementary")};
-					dt.addRow(tableau);
-				}
-				rset.close();
+			while(rset.next()) {
+				Object []tableau={rset.getInt("ID"),rset.getString("name"),rset.getString("elementary")};
+				dt.addRow(tableau);
+			}
+			rset.close();
 				
-		    } catch(SQLException ex){
-				ex.printStackTrace();
-				JOptionPane.showMessageDialog(null,"Not Found","Message d’avertissement",JOptionPane.ERROR_MESSAGE);			
-			}	
-			return dt;
+	    } catch(SQLException ex){
+			ex.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Not Found","Message d’avertissement",JOptionPane.ERROR_MESSAGE);			
+		}	
+		return dt;
+	}
+		
+	// Add Pokemon
+	public void addPokemon(int pokemonID, int userID) {
+		
+		try 
+		{
+		Statement st = new ConnectDB().connexion.createStatement();
+		st.executeUpdate("INSERT INTO havepokemon(ID_pokemon, ID_user) VALUES("+pokemonID+", "+userID+")");  
+		JOptionPane.showMessageDialog(null,"Pokémon Ajouté !"); 
+		}
+		catch (Exception e)
+		{
+		JOptionPane.showMessageDialog(null,"Erreur"); 
+		e.printStackTrace();
+		}
+	}
+	
+	// Delete Pokemon
+		public void deletePokemon(int pokemonID, int userID) {
+			
+			try 
+			{
+			Statement st = new ConnectDB().connexion.createStatement();
+			st.executeUpdate("DELETE FROM `havepokemon` WHERE ID_pokemon="+pokemonID+" AND ID_user="+userID);  
+			JOptionPane.showMessageDialog(null,"Pokémon Supprimé !"); 
+			}
+			catch (Exception e)
+			{
+			JOptionPane.showMessageDialog(null,"Erreur"); 
+			e.printStackTrace();
+			}
 		}
 	
 }

@@ -19,16 +19,16 @@ import javax.swing.border.EmptyBorder;
 
 import databaseProcessing.DataForPokedex;
 
-public class addPokemon extends JFrame {
+public class deletePokemon extends JFrame {
 	
 	JPanel pan, panNorth, panCenter, panSouth;
 	JLabel rechercher;
 	JTextField TFrechercher;
 	JTable pokemon;
-	JButton add, returnMenu, validrecherche;
+	JButton delete, returnMenu, validrecherche;
 	int pokemonSelectedID;
 	
-	public addPokemon(int ID_user) {
+	public deletePokemon(int ID_user) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 677, 800);
 		pan = new JPanel();
@@ -56,7 +56,7 @@ public class addPokemon extends JFrame {
 		panNorth.add(validrecherche);
 	
 		// Center panel
-		pokemon = new JTable(new DataForPokedex().tableAddPokemon());
+		pokemon = new JTable(new DataForPokedex().tableDeletePokemon(2));
 		pokemon.setAutoCreateRowSorter(true);
 		pokemon.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		pokemon.setRowHeight(30);
@@ -88,14 +88,15 @@ public class addPokemon extends JFrame {
 		});
 		panSouth.add(returnMenu);
 		
-		add = new JButton("Ajouter ce pok\u00E9mon \u00E0 mon Pokedex");
-		add.addActionListener(new ActionListener() {
+		delete = new JButton("Supprimer ce pok\u00E9mon \u00E0 mon Pokedex");
+		delete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				new DataForPokedex().addPokemon(pokemonSelectedID, 2);
+				new DataForPokedex().deletePokemon(pokemonSelectedID, 2);
+				// Update Pokemon
+				new DataForPokedex().tableDeletePokemon(2).fireTableDataChanged();
+				pokemon.setModel(new DataForPokedex().tableDeletePokemon(2));
 			}
 		});
-		panSouth.add(add);
-		
-		
+		panSouth.add(delete);
 	}
 }
