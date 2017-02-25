@@ -1,16 +1,16 @@
-package api;
+package databaseProcessing;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DatabaseProcessing {
+public class ConnectDB {
 
 	public Connection connexion;
 	String url;
 		
 	// Connexion base de données
-	public DatabaseProcessing()	{
+	public ConnectDB()	{
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			url = new String("jdbc:mysql://localhost:3306/pokedex"); // 
@@ -22,6 +22,5 @@ public class DatabaseProcessing {
 			System.out.println(e.getMessage());
 		}
 	}
-	
 	
 }

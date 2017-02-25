@@ -1,5 +1,10 @@
 package api;
 
+import java.util.ArrayList;
+
+import databaseProcessing.ConnectDB;
+import databaseProcessing.DataForPokedex;
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -9,7 +14,7 @@ public class Main {
 		
 		System.out.println(test.getName());
 		
-		DatabaseProcessing connectDB = new DatabaseProcessing();
+		ArrayList pokemon = new databaseProcessing.DataForPokedex().pokemonUser(2);
 		Menu frame = new Menu();
 		frame.setVisible(true);
 	}
