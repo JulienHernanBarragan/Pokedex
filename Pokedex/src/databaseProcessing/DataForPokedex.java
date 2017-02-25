@@ -6,6 +6,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 import databaseProcessing.ConnectDB;
 
@@ -35,5 +36,57 @@ public class DataForPokedex {
 		}	
 		return pokemon;
 	}
+	
+	// Table containing pokemon that the user have
+	public DefaultTableModel tableDeletePokemon(int ID_user){
+		
+		DefaultTableModel dt = new DefaultTableModel();
+		ResultSet rset;
+		try{
+			dt.addColumn("ID");
+			dt.addColumn("Nom");
+			dt.addColumn("Type");
+	    	Statement st = new ConnectDB().connexion.createStatement();
+			String query="SELECT P.ID, P.name, P.elementary FROM pokemon as P, user as U, havepokemon as H WHERE P.ID=H.ID_pokemon AND H.ID_user=U.ID AND U.ID="+ID_user;
+			rset=st.executeQuery(query);
+
+			while(rset.next()) {
+				Object []tableau={rset.getInt("ID"),rset.getString("name"),rset.getString("elementary")};
+				dt.addRow(tableau);
+			}
+			rset.close();
+			
+	    } catch(SQLException ex){
+			ex.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Not Found","Message d’avertissement",JOptionPane.ERROR_MESSAGE);			
+		}	
+		return dt;
+	}
+	
+	// Table containing pokemon for add to pokedex
+		public DefaultTableModel tableAddPokemon(){
+			
+			DefaultTableModel dt = new DefaultTableModel();
+			ResultSet rset;
+			try{
+				dt.addColumn("ID");
+				dt.addColumn("Nom");
+				dt.addColumn("Type");
+		    	Statement st = new ConnectDB().connexion.createStatement();
+				String query="SELECT ID, name, elementary FROM pokemon";
+				rset=st.executeQuery(query);
+
+				while(rset.next()) {
+					Object []tableau={rset.getInt("ID"),rset.getString("name"),rset.getString("elementary")};
+					dt.addRow(tableau);
+				}
+				rset.close();
+				
+		    } catch(SQLException ex){
+				ex.printStackTrace();
+				JOptionPane.showMessageDialog(null,"Not Found","Message d’avertissement",JOptionPane.ERROR_MESSAGE);			
+			}	
+			return dt;
+		}
 	
 }

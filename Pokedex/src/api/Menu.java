@@ -3,6 +3,8 @@ package api;
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -17,7 +19,7 @@ public class Menu extends JFrame {
 	JLabel title, signature;
 	JButton addPokemon, deletePokemon, seePokedex, disconnect;
 	
-	public Menu() {
+	public Menu(int user_ID) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 677, 800);
 		pan = new JPanel();
@@ -38,16 +40,23 @@ public class Menu extends JFrame {
 		panCentre.setLayout(new GridLayout(2, 2, 20, 40));
 		pan.add(panCentre, BorderLayout.CENTER);
 		
-		JButton addPokemon = new JButton("Ajouter un pokémon à mon pokedex");
+		addPokemon = new JButton("Ajouter un pokémon à mon pokedex");
+		addPokemon.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				addPokemon frame = new addPokemon(2);
+				frame.setVisible(true);
+				dispose();
+			}
+		});
 		panCentre.add(addPokemon);
 		
-		JButton deletePokemon = new JButton("Supprimer un pokémon de mon pokedex");
+		deletePokemon = new JButton("Supprimer un pokémon de mon pokedex");
 		panCentre.add(deletePokemon);
 		
-		JButton seePokedex = new JButton("Voir mon pokedex");
+		seePokedex = new JButton("Voir mon pokedex");
 		panCentre.add(seePokedex);
 		
-		JButton disconnect = new JButton("Déconnexion");
+		disconnect = new JButton("Déconnexion");
 		panCentre.add(disconnect);
 		
 		
