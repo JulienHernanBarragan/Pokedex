@@ -3,16 +3,16 @@ package api;
 public class Pokemon {
 	
 	private String name;
-    private String HP;
+    private int HP;
     private String elementary;
     private String attack;
-    private String damage;
+    private int damage;
     private String weight;
     private String length;
     private String pathPic;
     private String weakness;
 
-    public Pokemon(String name, String HP, String elementary, String attack, String damage, String weight, 
+    public Pokemon(String name, int HP, String elementary, String attack, int damage, String weight, 
     			   String length, String pathPic, String weakness) {
     	
             this.name = name;
@@ -30,7 +30,7 @@ public class Pokemon {
     	return this.name;
     }
     
-    public String getHP() {
+    public int getHP() {
     	return this.HP;
     }
     
@@ -42,7 +42,7 @@ public class Pokemon {
     	return this.attack;
     }
     
-    public String getDamage() {
+    public int getDamage() {
     	return this.damage;
     }
     
