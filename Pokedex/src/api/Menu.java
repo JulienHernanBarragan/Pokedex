@@ -1,11 +1,14 @@
 package api;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -15,32 +18,38 @@ import javax.swing.border.EmptyBorder;
 
 public class Menu extends JFrame {
 	private static final long serialVersionUID = 1L;
-	private JPanel pan, panNord, panCentre, panSud;
+	private JPanel pan, panNorth, panCenter, panSouth;
 	private JLabel title, signature;
 	private JButton addPokemon, deletePokemon, seePokedex, disconnect;
 	
 	public Menu(int user_ID) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 677, 800);
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Identification.class.getResource("/img/pokemonIcon.png")));
+		setTitle("Pokedex : menu principal");
 		pan = new JPanel();
 		pan.setBorder(new EmptyBorder(5, 5, 5, 5));
+		pan.setBackground(new Color(178, 34, 34));
 		pan.setLayout(new BorderLayout(0, 0));
 		setContentPane(pan);
 		
 		// North panel
-		panNord = new JPanel();
-		pan.add(panNord, BorderLayout.NORTH);
+		panNorth = new JPanel();
+		panNorth.setBackground(new Color(178, 34, 34));
+		pan.add(panNorth, BorderLayout.NORTH);
 		
-		title = new JLabel("Pokedex");
-		title.setFont(new Font("Trebuchet MS", Font.BOLD, 99));
-		panNord.add(title);
+		title = new JLabel("");
+		title.setIcon(new ImageIcon(Test.class.getResource("/img/PokemonTitle.png")));
+		panNorth.add(title);
 		
 		// Center panel
-		panCentre = new JPanel();
-		panCentre.setLayout(new GridLayout(2, 2, 20, 40));
-		pan.add(panCentre, BorderLayout.CENTER);
+		panCenter = new JPanel();
+		panCenter.setBackground(new Color(178, 34, 34));
+		panCenter.setLayout(new GridLayout(2, 2, 20, 40));
+		pan.add(panCenter, BorderLayout.CENTER);
 		
-		addPokemon = new JButton("Ajouter un pokémon à mon pokedex");
+		addPokemon = new JButton("");
+		addPokemon.setIcon(new ImageIcon(Menu.class.getResource("/img/buttonAdd.png")));
 		addPokemon.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				addPokemon frame = new addPokemon(user_ID);
@@ -48,9 +57,10 @@ public class Menu extends JFrame {
 				dispose();
 			}
 		});
-		panCentre.add(addPokemon);
+		panCenter.add(addPokemon);
 		
-		deletePokemon = new JButton("Supprimer un pokémon de mon pokedex");
+		deletePokemon = new JButton("");
+		deletePokemon.setIcon(new ImageIcon(Menu.class.getResource("/img/buttonDelete.png")));
 		deletePokemon.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				deletePokemon frame = new deletePokemon(user_ID);
@@ -58,28 +68,38 @@ public class Menu extends JFrame {
 				dispose();
 			}
 		});
-		panCentre.add(deletePokemon);
+		panCenter.add(deletePokemon);
 		
-		seePokedex = new JButton("Voir mon pokedex");
+		seePokedex = new JButton("");
+		seePokedex.setIcon(new ImageIcon(Menu.class.getResource("/img/buttonPokedex.png")));
 		seePokedex.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				seePokemonCard frame = new seePokemonCard(user_ID);
 				frame.setVisible(true);
 			}
 		});
-		panCentre.add(seePokedex);
+		panCenter.add(seePokedex);
 		
-		disconnect = new JButton("Déconnexion");
-		panCentre.add(disconnect);
+		disconnect = new JButton("");
+		disconnect.setIcon(new ImageIcon(Menu.class.getResource("/img/logout-sign.png")));
+		disconnect.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Identification frame = new Identification();
+				frame.setVisible(true);
+				dispose();
+			}
+		});
+		panCenter.add(disconnect);
 		
 		
 		// South panel
-		panSud = new JPanel();
-		pan.add(panSud, BorderLayout.SOUTH);
+		panSouth = new JPanel();
+		panSouth.setBackground(new Color(178, 34, 34));
+		pan.add(panSouth, BorderLayout.SOUTH);
 		
 		signature = new JLabel("Create by Hernandez Julien");
 		signature.setFont(new Font("Trebuchet MS", Font.BOLD, 17));
-		panSud.add(signature);
+		panSouth.add(signature);
 	}
 	
 }

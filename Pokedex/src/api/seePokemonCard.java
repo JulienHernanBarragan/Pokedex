@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.SystemColor;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -30,11 +31,14 @@ public class seePokemonCard extends JFrame {
 	
 	public seePokemonCard(int user_ID) {
 		setBounds(100, 100, 677, 800);
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Identification.class.getResource("/img/pokemonIcon.png")));
+		setTitle("Pokedex");
 		pan = new JPanel();
 		pan.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(pan);
 		pan.setLayout(null);
 		
+		System.out.println(user_ID);
 		pokemon = new DataForPokedex().pokemonUser(user_ID);
 		
 	// Objets Window component 

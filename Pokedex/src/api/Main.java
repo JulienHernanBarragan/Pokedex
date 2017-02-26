@@ -4,7 +4,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		Menu frame = new Menu(2);
+		Identification frame = new Identification();
 		frame.setVisible(true);
 	
 	}

@@ -26,29 +26,31 @@ public class Identification extends JFrame {
 	private JTextField TFuser;
 	private JPasswordField TFpassword;
 	private JButton connect;
-	private String Duser,Dmdp,texteID;
+	private String Duser,Dmdp;
 		
 	public Identification() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//setIconImage(Toolkit.getDefaultToolkit().getImage(Identification.class.getResource("/image/logo MFC.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Identification.class.getResource("/img/pokemonIcon.png")));
+		setTitle("Pokedex : identifiez-vous");
 		pan = new JPanel();
 	    pan.setLayout(null);
+		pan.setBackground(new Color(178, 34, 34));
 		setSize(700,400);
 		setContentPane(pan);
 		setLocationRelativeTo(null);
 			
-		/*logo = new JLabel();
-		logo.setIcon(new ImageIcon(Identification.class.getResource("")));
-		logo.setBounds(300, 11, 163, 128);
-		pan.add(logo);*/
+		logo = new JLabel();
+		logo.setIcon(new ImageIcon(Identification.class.getResource("/img/pokemonIcon.png")));
+		logo.setBounds(190, 5, 300, 128);
+		pan.add(logo);
 			
 		user = new JLabel("Utilisateur :");
-		user.setFont(new Font("Times New Roman", Font.BOLD, 21));
+		user.setFont(new Font("Trebuchet MS", Font.BOLD, 21));
 		user.setBounds(86, 142, 151, 24);
 		pan.add(user);
 			
 		password = new JLabel ("Mot de Passe :");
-		password.setFont(new Font("Times New Roman", Font.BOLD, 21));
+		password.setFont(new Font("Trebuchet MS", Font.BOLD, 21));
 		password.setBounds(86, 198, 142, 24);
 		pan.add(password);
 			
@@ -79,7 +81,7 @@ public class Identification extends JFrame {
 		pan.add(TFpassword);
 			
 		connect = new JButton ("Connexion");
-		connect.setBackground(new Color(2, 152, 229));
+		connect.setBackground(new Color(0, 0, 0));
 		connect.setForeground(Color.WHITE);
 		connect.setFont(new Font("Trebuchet MS", Font.PLAIN, 30));
 		connect.setBounds(229, 265, 257, 46);

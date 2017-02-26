@@ -26,7 +26,6 @@ public class DataForPokedex {
 				String ligne = rset.getInt("ID")+","+rset.getString("name")+","+rset.getInt("HP")+","+rset.getString("elementary")+
 							   ","+rset.getString("length")+","+rset.getString("weight")+","+rset.getString("weakness")+","+
 							   rset.getString("attack")+","+rset.getInt("damage")+","+rset.getString("pathPicture");
-				System.out.println(ligne);
 				pokemon.add(ligne);
 			}
 			rset.close();
