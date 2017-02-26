@@ -92,6 +92,9 @@ public class addPokemon extends JFrame {
 		add.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				new DataForPokedex().addPokemon(pokemonSelectedID, user_ID);
+				// Update Pokemon
+				new DataForPokedex().tableAddPokemon(user_ID).fireTableDataChanged();
+				pokemon.setModel(new DataForPokedex().tableAddPokemon(user_ID));
 			}
 		});
 		panSouth.add(add);
