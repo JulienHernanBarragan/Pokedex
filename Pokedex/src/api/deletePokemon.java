@@ -21,12 +21,12 @@ import databaseProcessing.DataForPokedex;
 
 public class deletePokemon extends JFrame {
 	
-	JPanel pan, panNorth, panCenter, panSouth;
-	JLabel rechercher;
-	JTextField TFrechercher;
-	JTable pokemon;
-	JButton delete, returnMenu, validrecherche;
-	int pokemonSelectedID;
+	private JPanel pan, panNorth, panCenter, panSouth;
+	private JLabel rechercher;
+	private JTextField TFrechercher;
+	private JTable pokemon;
+	private JButton delete, returnMenu, validrecherche;
+	private int pokemonSelectedID;
 	
 	public deletePokemon(int user_ID) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -88,7 +88,7 @@ public class deletePokemon extends JFrame {
 		});
 		panSouth.add(returnMenu);
 		
-		delete = new JButton("Supprimer ce pok\u00E9mon \u00E0 mon Pokedex");
+		delete = new JButton("Supprimer ce pok\u00E9mon de mon Pokedex");
 		delete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				new DataForPokedex().deletePokemon(pokemonSelectedID, user_ID);

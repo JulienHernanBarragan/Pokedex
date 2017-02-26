@@ -15,9 +15,9 @@ import javax.swing.border.EmptyBorder;
 
 public class Menu extends JFrame {
 	private static final long serialVersionUID = 1L;
-	JPanel pan, panNord, panCentre, panSud;
-	JLabel title, signature;
-	JButton addPokemon, deletePokemon, seePokedex, disconnect;
+	private JPanel pan, panNord, panCentre, panSud;
+	private JLabel title, signature;
+	private JButton addPokemon, deletePokemon, seePokedex, disconnect;
 	
 	public Menu(int user_ID) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -61,6 +61,12 @@ public class Menu extends JFrame {
 		panCentre.add(deletePokemon);
 		
 		seePokedex = new JButton("Voir mon pokedex");
+		seePokedex.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				seePokemonCard frame = new seePokemonCard(user_ID);
+				frame.setVisible(true);
+			}
+		});
 		panCentre.add(seePokedex);
 		
 		disconnect = new JButton("Déconnexion");

@@ -21,12 +21,12 @@ import databaseProcessing.DataForPokedex;
 
 public class addPokemon extends JFrame {
 	
-	JPanel pan, panNorth, panCenter, panSouth;
-	JLabel rechercher;
-	JTextField TFrechercher;
-	JTable pokemon;
-	JButton add, returnMenu, validrecherche;
-	int pokemonSelectedID;
+	private JPanel pan, panNorth, panCenter, panSouth;
+	private JLabel rechercher;
+	private JTextField TFrechercher;
+	private JTable pokemon;
+	private JButton add, returnMenu, validrecherche;
+	private int pokemonSelectedID;
 	
 	public addPokemon(int user_ID) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -56,7 +56,7 @@ public class addPokemon extends JFrame {
 		panNorth.add(validrecherche);
 	
 		// Center panel
-		pokemon = new JTable(new DataForPokedex().tableAddPokemon());
+		pokemon = new JTable(new DataForPokedex().tableAddPokemon(user_ID));
 		pokemon.setAutoCreateRowSorter(true);
 		pokemon.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		pokemon.setRowHeight(30);

@@ -15,10 +15,11 @@ public class DataForPokedex {
 	// Arraylist that containt pokemon informations of the user
 	public ArrayList<String> pokemonUser (int ID_user) {
 		ArrayList<String> pokemon = new ArrayList<String>();
+		pokemon.add("Page Accueil");
 		ResultSet rset;
 		try{
 	    	Statement st = new ConnectDB().connexion.createStatement();
-			String query="SELECT P.* FROM pokemon as P, user as U, havepokemon as H WHERE P.ID=H.ID_pokemon AND H.ID_user=U.ID AND U.ID="+ID_user; 
+			String query="SELECT P.* FROM pokemon as P, user as U, havepokemon as H WHERE P.ID=H.ID_pokemon AND H.ID_user=U.ID AND U.ID="+ID_user+" GROUP BY P.ID"; 
 			rset=st.executeQuery(query);
 	
 			while(rset.next()) {
@@ -34,6 +35,7 @@ public class DataForPokedex {
 			ex.printStackTrace();
 			JOptionPane.showMessageDialog(null,"Not Found","Message d’avertissement",JOptionPane.ERROR_MESSAGE);			
 		}	
+		pokemon.add("Fin");
 		return pokemon;
 	}
 	
@@ -47,7 +49,7 @@ public class DataForPokedex {
 			dt.addColumn("Nom");
 			dt.addColumn("Type");
 	    	Statement st = new ConnectDB().connexion.createStatement();
-			String query="SELECT P.ID, P.name, P.elementary FROM pokemon as P, user as U, havepokemon as H WHERE P.ID=H.ID_pokemon AND H.ID_user=U.ID AND U.ID="+ID_user;
+			String query="SELECT P.ID, P.name, P.elementary FROM pokemon as P, user as U, havepokemon as H WHERE P.ID=H.ID_pokemon AND H.ID_user=U.ID AND U.ID="+ID_user+" GROUP BY P.ID";
 			rset=st.executeQuery(query);
 
 			while(rset.next()) {
@@ -63,8 +65,8 @@ public class DataForPokedex {
 		return dt;
 	}
 	
-	// Table containing pokemon for add to pokedex
-	public DefaultTableModel tableAddPokemon(){
+	// Table containing pokemon that the user haven't
+	public DefaultTableModel tableAddPokemon(int user_ID){
 			
 		DefaultTableModel dt = new DefaultTableModel();
 		ResultSet rset;
@@ -73,7 +75,7 @@ public class DataForPokedex {
 			dt.addColumn("Nom");
 			dt.addColumn("Type");
 		   	Statement st = new ConnectDB().connexion.createStatement();
-			String query="SELECT ID, name, elementary FROM pokemon";
+			String query="SELECT P.ID, P.name, P.elementary FROM pokemon as P WHERE P.ID NOT IN (SELECT P.ID FROM pokemon as P, user as U, havepokemon as H WHERE P.ID=H.ID_pokemon AND H.ID_user=U.ID AND H.ID_user="+user_ID+")";
 			rset=st.executeQuery(query);
 
 			while(rset.next()) {

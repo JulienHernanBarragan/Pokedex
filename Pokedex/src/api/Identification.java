@@ -21,12 +21,12 @@ import databaseProcessing.ConnectDB;
 public class Identification extends JFrame {
 		
 	private static final long serialVersionUID = 1L;
-	JPanel pan;
-	JLabel logo, user, password;
-	JTextField TFuser;
-	JPasswordField TFpassword;
-	JButton connect;
-	String Duser,Dmdp,texteID;
+	private JPanel pan;
+	private JLabel logo, user, password;
+	private JTextField TFuser;
+	private JPasswordField TFpassword;
+	private JButton connect;
+	private String Duser,Dmdp,texteID;
 		
 	public Identification() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
