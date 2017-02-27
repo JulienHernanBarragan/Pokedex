@@ -190,6 +190,20 @@ public class seePokemonCard extends JFrame {
 								logoTypeAttack.setIcon(new ImageIcon(seePokemonCard.class.getResource("/img/logoTypeMedium/normal.png")));
 								break;
 							case "Combat" : 
+								logoType.setIcon(new ImageIcon(seePokemonCard.class.getResource("/img/logoTypeSmall/fighting.png")));
+								logoTypeAttack.setIcon(new ImageIcon(seePokemonCard.class.getResource("/img/logoTypeMedium/fighting.png")));
+								break;
+							case "Glace" : 
+								logoType.setIcon(new ImageIcon(seePokemonCard.class.getResource("/img/logoTypeSmall/ice.png")));
+								logoTypeAttack.setIcon(new ImageIcon(seePokemonCard.class.getResource("/img/logoTypeMedium/ice.png")));
+								break;
+							case "Vol" : 
+								logoType.setIcon(new ImageIcon(seePokemonCard.class.getResource("/img/logoTypeSmall/fly.png")));
+								logoTypeAttack.setIcon(new ImageIcon(seePokemonCard.class.getResource("/img/logoTypeMedium/fly.png")));
+								break;
+							case "Dragon" : 
+								logoType.setIcon(new ImageIcon(seePokemonCard.class.getResource("/img/logoTypeSmall/dragon.png")));
+								logoTypeAttack.setIcon(new ImageIcon(seePokemonCard.class.getResource("/img/logoTypeMedium/dragon.png")));
 								break;
 							default :
 								break;
@@ -217,9 +231,20 @@ public class seePokemonCard extends JFrame {
 							case "Normal" : 
 								logoTypeWeakness.setIcon(new ImageIcon(seePokemonCard.class.getResource("/img/logoTypeSmall/normal.png")));
 								break;
-							case "Combat" : 
+							case "Combat" :
+								logoTypeWeakness.setIcon(new ImageIcon(seePokemonCard.class.getResource("/img/logoTypeSmall/fighting.png")));
+								break;
+							case "Glace" : 
+								logoTypeWeakness.setIcon(new ImageIcon(seePokemonCard.class.getResource("/img/logoTypeSmall/ice.png")));
+								break;
+							case "Vol" : 
+								logoTypeWeakness.setIcon(new ImageIcon(seePokemonCard.class.getResource("/img/logoTypeSmall/fly.png")));
+								break;
+							case "Dragon" : 
+								logoTypeWeakness.setIcon(new ImageIcon(seePokemonCard.class.getResource("/img/logoTypeSmall/dragon.png")));
 								break;
 							default :
+								logoTypeWeakness.setIcon(new ImageIcon(seePokemonCard.class.getResource("")));
 								break;
 						}
 						attack.setText(pokemonData[7]);
@@ -289,6 +314,20 @@ public class seePokemonCard extends JFrame {
 								logoTypeAttack.setIcon(new ImageIcon(seePokemonCard.class.getResource("/img/logoTypeMedium/normal.png")));
 								break;
 							case "Combat" : 
+								logoType.setIcon(new ImageIcon(seePokemonCard.class.getResource("/img/logoTypeSmall/fighting.png")));
+								logoTypeAttack.setIcon(new ImageIcon(seePokemonCard.class.getResource("/img/logoTypeMedium/fighting.png")));
+								break;
+							case "Glace" : 
+								logoType.setIcon(new ImageIcon(seePokemonCard.class.getResource("/img/logoTypeSmall/ice.png")));
+								logoTypeAttack.setIcon(new ImageIcon(seePokemonCard.class.getResource("/img/logoTypeMedium/ice.png")));
+								break;
+							case "Vol" : 
+								logoType.setIcon(new ImageIcon(seePokemonCard.class.getResource("/img/logoTypeSmall/fly.png")));
+								logoTypeAttack.setIcon(new ImageIcon(seePokemonCard.class.getResource("/img/logoTypeMedium/fly.png")));
+								break;
+							case "Dragon" : 
+								logoType.setIcon(new ImageIcon(seePokemonCard.class.getResource("/img/logoTypeSmall/dragon.png")));
+								logoTypeAttack.setIcon(new ImageIcon(seePokemonCard.class.getResource("/img/logoTypeMedium/dragon.png")));
 								break;
 							default :
 								break;
@@ -316,9 +355,20 @@ public class seePokemonCard extends JFrame {
 							case "Normal" : 
 								logoTypeWeakness.setIcon(new ImageIcon(seePokemonCard.class.getResource("/img/logoTypeSmall/normal.png")));
 								break;
-							case "Combat" : 
+							case "Combat" :
+								logoTypeWeakness.setIcon(new ImageIcon(seePokemonCard.class.getResource("/img/logoTypeSmall/fighting.png")));
+								break;
+							case "Glace" : 
+								logoTypeWeakness.setIcon(new ImageIcon(seePokemonCard.class.getResource("/img/logoTypeSmall/ice.png")));
+								break;
+							case "Vol" : 
+								logoTypeWeakness.setIcon(new ImageIcon(seePokemonCard.class.getResource("/img/logoTypeSmall/fly.png")));
+								break;
+							case "Dragon" : 
+								logoTypeWeakness.setIcon(new ImageIcon(seePokemonCard.class.getResource("/img/logoTypeSmall/dragon.png")));
 								break;
 							default :
+								logoTypeWeakness.setIcon(new ImageIcon(seePokemonCard.class.getResource("")));
 								break;
 						}
 						attack.setText(pokemonData[7]);
