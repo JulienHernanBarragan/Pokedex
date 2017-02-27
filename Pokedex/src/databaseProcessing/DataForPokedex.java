@@ -121,5 +121,65 @@ public class DataForPokedex {
 			e.printStackTrace();
 			}
 		}
+		
+		// Search table that containing pokemon that the user haven't
+		public DefaultTableModel tableAddPokemonSearch(int user_ID, String search){
+				
+			DefaultTableModel dt = new DefaultTableModel();
+			ResultSet rset = null;
+			try{
+				dt.addColumn("ID");
+				dt.addColumn("Nom");
+				dt.addColumn("Type");
+			   	Statement st = new ConnectDB().connexion.createStatement();
+				String[] tab=search.split(" ");
+
+				for(int i=0,longueur=tab.length;i<longueur;i++){
+					String query="SELECT P.ID, P.name, P.elementary FROM pokemon as P WHERE P.ID NOT IN (SELECT P.ID FROM pokemon as P"
+							   + ", user as U, havepokemon as H WHERE P.ID=H.ID_pokemon AND H.ID_user=U.ID AND H.ID_user="+user_ID+") AND P.name LIKE '"+search+"%' GROUP BY P.ID";
+					rset=st.executeQuery(query);
+				}
+
+				while(rset.next()) {
+					Object []tableau={rset.getInt("ID"),rset.getString("name"),rset.getString("elementary")};
+					dt.addRow(tableau);
+				}
+				rset.close();
+					
+		    } catch(SQLException ex){
+				ex.printStackTrace();
+				JOptionPane.showMessageDialog(null,"Not Found","Message d’avertissement",JOptionPane.ERROR_MESSAGE);			
+			}	
+			return dt;
+		}
 	
+		// Search table that containing pokemon that the user have
+				public DefaultTableModel tableDeletePokemonSearch(int user_ID, String search){
+						
+					DefaultTableModel dt = new DefaultTableModel();
+					ResultSet rset = null;
+					try{
+						dt.addColumn("ID");
+						dt.addColumn("Nom");
+						dt.addColumn("Type");
+					   	Statement st = new ConnectDB().connexion.createStatement();
+						String[] tab=search.split(" ");
+
+						for(int i=0,longueur=tab.length;i<longueur;i++){
+							String query="SELECT P.ID, P.name, P.elementary FROM pokemon as P, user as U, havepokemon as H WHERE P.ID=H.ID_pokemon AND H.ID_user=U.ID AND U.ID="+user_ID+" AND P.name LIKE '"+search+"%' GROUP BY P.ID";
+							rset=st.executeQuery(query);
+						}
+
+						while(rset.next()) {
+							Object []tableau={rset.getInt("ID"),rset.getString("name"),rset.getString("elementary")};
+							dt.addRow(tableau);
+						}
+						rset.close();
+							
+				    } catch(SQLException ex){
+						ex.printStackTrace();
+						JOptionPane.showMessageDialog(null,"Not Found","Message d’avertissement",JOptionPane.ERROR_MESSAGE);			
+					}	
+					return dt;
+				}
 }

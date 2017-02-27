@@ -8,6 +8,8 @@ import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -26,10 +28,10 @@ import databaseProcessing.DataForPokedex;
 public class deletePokemon extends JFrame {
 	
 	private JPanel pan, panNorth, panCenter, panSouth;
-	private JLabel rechercher;
-	private JTextField TFrechercher;
+	private JLabel search;
+	private JTextField TFsearch;
 	private JTable pokemon;
-	private JButton delete, returnMenu, validrecherche;
+	private JButton delete, returnMenu, validsearch;
 	private int pokemonSelectedID;
 	
 	public deletePokemon(int user_ID) {
@@ -47,21 +49,31 @@ public class deletePokemon extends JFrame {
 		panNorth = new JPanel();
 		pan.add(panNorth, BorderLayout.NORTH);
 		
-		rechercher = new JLabel("Rechercher :");
-		panNorth.add(rechercher);
+		search = new JLabel("Rechercher :");
+		panNorth.add(search);
 		
-		TFrechercher = new JTextField();
-		TFrechercher.setFont(new Font("Trebuchet MS", Font.BOLD, 16));
-		panNorth.add(TFrechercher);
-		TFrechercher.setColumns(10);
-		
-		validrecherche = new JButton("OK");
-		validrecherche.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				System.out.println("jjjjj");
+		TFsearch = new JTextField();
+		TFsearch.setFont(new Font("Trebuchet MS", Font.BOLD, 16));
+		TFsearch.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				if (arg0.getKeyCode() == KeyEvent.VK_ENTER) {
+					String rechercher= TFsearch.getText();
+	                pokemon.setModel(new DataForPokedex().tableDeletePokemonSearch(user_ID, rechercher));
+		    	}
 			}
 		});
-		panNorth.add(validrecherche);
+		panNorth.add(TFsearch);
+		TFsearch.setColumns(10);
+		
+		validsearch = new JButton("OK");
+		validsearch.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String rechercher= TFsearch.getText();
+                pokemon.setModel(new DataForPokedex().tableDeletePokemonSearch(user_ID, rechercher));
+           }
+		});
+		panNorth.add(validsearch);
 	
 		// Center panel
 		pokemon = new JTable(new DataForPokedex().tableDeletePokemon(user_ID));
