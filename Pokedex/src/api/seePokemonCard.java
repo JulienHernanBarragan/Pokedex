@@ -33,6 +33,7 @@ public class seePokemonCard extends JFrame {
 		setBounds(100, 100, 677, 800);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Identification.class.getResource("/img/pokemonIcon.png")));
 		setTitle("Pokedex");
+		setResizable(false);
 		pan = new JPanel();
 		pan.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(pan);

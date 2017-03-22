@@ -32,6 +32,7 @@ public class Identification extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Identification.class.getResource("/img/pokemonIcon.png")));
 		setTitle("Pokedex : identifiez-vous");
+		setResizable(false);
 		pan = new JPanel();
 	    pan.setLayout(null);
 		pan.setBackground(new Color(178, 34, 34));
